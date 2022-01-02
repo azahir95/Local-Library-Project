@@ -30,15 +30,20 @@ function getMostCommonGenres(books) {
   .slice(0, 5);
 }
 
+//HELPER FUNCTION
+function helper(array) {
+  const sorted = array.sort((a, b)=> b.count-a.count)
+  return sorted.slice(0,5)
+}
 
 //should return an ordered list of most popular books
 //should limit the list to the top five
 function getMostPopularBooks(books) {
-  return books.map((book) => {
+ let results= {};
+  const mapped = books.map((book) => {
     return {name : book.title, count: book.borrows.length};
   })
-  .sort((a,b)=> (a.count<b.count ? 1: -1))
-  .slice(0, 5);
+   return helper(mapped)
 }
  
 //should return an ordered list of most popular authors
